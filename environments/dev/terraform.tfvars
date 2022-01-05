@@ -11,8 +11,8 @@ initial_node_count       = 1
 enable_legacy_abac       =  "true"
 namespace_name           = "staging"
 address_name             = "address"
-service_name             = "nginx"
-controller_name          = "nginx"
+service_name             = "jenkins"
+controller_name          = "jenkins"
 enable_binary_authorization = "true"
 
 
