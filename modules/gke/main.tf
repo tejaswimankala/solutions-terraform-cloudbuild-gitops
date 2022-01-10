@@ -59,23 +59,21 @@ resource "kubernetes_replication_controller" "nginx" {
       spec {
         container {
             image = "jenkins/jenkins:lts-jdk11"
-            name  = "nginx
+            name  = "nginx"
+
+            # resources {
+            #     limits {
+            #         cpu    = "0.5"
+            #         memory = "512Mi"
+            #     }
+
+            #     requests {
+            #         cpu    = "250m"
+            #         memory = "50Mi"
+            #    }
+            # }
+        }       
+      }
     }
   }
-
-
-#             resources {
-#                 limits {
-#                     cpu    = "0.5"
-#                     memory = "512Mi"
-#                 }
-
-#                 requests {
-#                     cpu    = "250m"
-#                     memory = "50Mi"
-#                }
-#             }
-#         }       
-#       }
-    
-
+}
