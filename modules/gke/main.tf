@@ -1,8 +1,8 @@
-resource "kubernetes_namespace" "name" {
-  metadata {
-    name = var.namespace_name
-  }
-}
+# resource "kubernetes_namespace" "name" {
+#   metadata {
+#     name = var.namespace_name
+#   }
+# }
 
 resource "google_compute_address" "df-1" {
   name   = var.address_name
@@ -13,7 +13,7 @@ resource "google_compute_address" "df-1" {
 
 resource "kubernetes_service" "jenkins" {
   metadata {
-   namespace = kubernetes_namespace.name.metadata[0].name
+   //namespace = kubernetes_namespace.name.metadata[0].name
     name      = var.service_name
   }
 
@@ -38,7 +38,7 @@ resource "kubernetes_service" "jenkins" {
 resource "kubernetes_replication_controller" "jenkins" {
   metadata {
     name      = var.controller_name
-   namespace = kubernetes_namespace.name.metadata[0].name
+  // namespace = kubernetes_namespace.name.metadata[0].name
 
     labels = {
       run = "jenkins"
