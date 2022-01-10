@@ -59,7 +59,10 @@ resource "kubernetes_replication_controller" "nginx" {
       spec {
         container {
             image = "jenkins/jenkins:lts-jdk11"
-            name  = "nginx"
+            name  = "nginx
+    }
+  }
+}
 
 #             resources {
 #                 limits {
@@ -74,7 +77,5 @@ resource "kubernetes_replication_controller" "nginx" {
 #             }
 #         }       
 #       }
-    }
-  }
-}
+    
 
