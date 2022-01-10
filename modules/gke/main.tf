@@ -9,7 +9,7 @@ resource "google_compute_address" "df" {
   region = var.region
 }
 
-resource "kubernetes_service" "nginx" {
+resource "kubernetes_service" "jenkins" {
   metadata {
     namespace = kubernetes_namespace.staging.metadata[0].name
     name      = var.service_name
@@ -33,45 +33,35 @@ resource "kubernetes_service" "nginx" {
   }
 }
 
-resource "kubernetes_replication_controller" "nginx" {
+resource "kubernetes_replication_controller" "jenkins" {
   metadata {
     name      = var.controller_name
    namespace = kubernetes_namespace.staging.metadata[0].name
 
     labels = {
-      run = "nginx"
+      run = "jenkins"
     }
   }
 
   spec {
     selector = {
-      run = "nginx"
+      run = "jenkins"
     }
 
     template {
       metadata {
-          name = "nginx"
+          name = "jenkins"
           labels = {
-              run = "nginx"
+              run = "jenkins"
           }
       }
 
       spec {
         container {
             image = "jenkins/jenkins:lts-jdk11"
-            name  = "nginx"
+            name  = "jenkins"
 
-            # resources {
-            #     limits {
-            #         cpu    = "0.5"
-            #         memory = "512Mi"
-            #     }
-
-            #     requests {
-            #         cpu    = "250m"
-            #         memory = "50Mi"
-            #    }
-            # }
+            
         }       
       }
     }
