@@ -4,7 +4,7 @@ resource "kubernetes_namespace" "name" {
   }
 }
 
-resource "google_compute_address" "df-1" {
+resource "google_compute_address" "nw" {
   name   = var.address_name
   region = var.region
 }
@@ -31,7 +31,7 @@ resource "kubernetes_service" "jenkins" {
     }
 
     type             = "LoadBalancer"
-    load_balancer_ip = google_compute_address.df-1.address
+    load_balancer_ip = google_compute_address.nw.address
   }
 }
 
