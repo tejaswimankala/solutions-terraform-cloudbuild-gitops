@@ -1,8 +1,8 @@
-# resource "kubernetes_namespace" "staging" {
-#   metadata {
-#     name = var.namespace_name
-#   }
-# }
+resource "kubernetes_namespace" "staging" {
+  metadata {
+    name = var.namespace_name
+  }
+}
 
 resource "google_compute_address" "df-1" {
   name   = var.address_name
