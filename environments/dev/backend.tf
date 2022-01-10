@@ -3,7 +3,7 @@
 
 terraform {
   backend "gcs" {
-    bucket = "new-12"
+    bucket = "jan-10-1"
     prefix = "env/dev"
   }
 }
