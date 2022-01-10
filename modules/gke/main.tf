@@ -62,7 +62,7 @@ resource "kubernetes_replication_controller" "nginx" {
             name  = "nginx
     }
   }
-}
+
 
 #             resources {
 #                 limits {
