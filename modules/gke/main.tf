@@ -1,25 +1,23 @@
-resource "kubernetes_namespace" "namespace" {
+resource "kubernetes_namespace" "staging" {
   metadata {
     name = var.namespace_name
   }
 }
 
-resource "google_compute_address" "df-1" {
+resource "google_compute_address" "df" {
   name   = var.address_name
   region = var.region
 }
 
-
-
-resource "kubernetes_service" "jenkins" {
+resource "kubernetes_service" "nginx" {
   metadata {
-   namespace = kubernetes_namespace.namespace.metadata[0].name
+    namespace = kubernetes_namespace.staging.metadata[0].name
     name      = var.service_name
   }
 
   spec {
     selector = {
-      run = "jenkins"
+      run = "nginx"
     }
 
     session_affinity = "ClientIP"
@@ -31,49 +29,49 @@ resource "kubernetes_service" "jenkins" {
     }
 
     type             = "LoadBalancer"
-    load_balancer_ip = google_compute_address.df-1.address
+    load_balancer_ip = google_compute_address.df.address
   }
 }
 
-resource "kubernetes_replication_controller" "jenkins" {
+resource "kubernetes_replication_controller" "nginx" {
   metadata {
     name      = var.controller_name
-   namespace = kubernetes_namespace.namespace.metadata[0].name
+   namespace = kubernetes_namespace.staging.metadata[0].name
 
     labels = {
-      run = "jenkins"
+      run = "nginx"
     }
   }
 
   spec {
     selector = {
-      run = "jenkins"
+      run = "nginx"
     }
 
     template {
       metadata {
-          name = "jenkins"
+          name = "nginx"
           labels = {
-              run = "jenkins"
+              run = "nginx"
           }
       }
 
       spec {
         container {
             image = "jenkins/jenkins:lts-jdk11"
-            name  = "jenkins"
+            name  = "nginx"
 
-            # resources {
-            #     limits {
-            #         cpu    = "0.5"
-            #         memory = "512Mi"
-            #     }
+            resources {
+                limits {
+                    cpu    = "0.5"
+                    memory = "512Mi"
+                }
 
-            #     requests {
-            #         cpu    = "250m"
-            #         memory = "50Mi"
-            #    }
-            # }
+                requests {
+                    cpu    = "250m"
+                    memory = "50Mi"
+               }
+            }
         }       
       }
     }
