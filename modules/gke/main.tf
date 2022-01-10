@@ -61,19 +61,19 @@ resource "kubernetes_replication_controller" "nginx" {
             image = "jenkins/jenkins:lts-jdk11"
             name  = "nginx"
 
-            resources {
-                limits {
-                    cpu    = "0.5"
-                    memory = "512Mi"
-                }
+#             resources {
+#                 limits {
+#                     cpu    = "0.5"
+#                     memory = "512Mi"
+#                 }
 
-                requests {
-                    cpu    = "250m"
-                    memory = "50Mi"
-               }
-            }
-        }       
-      }
+#                 requests {
+#                     cpu    = "250m"
+#                     memory = "50Mi"
+#                }
+#             }
+#         }       
+#       }
     }
   }
 }
