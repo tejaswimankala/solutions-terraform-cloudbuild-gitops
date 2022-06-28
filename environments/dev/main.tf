@@ -6,7 +6,7 @@ locals {
 }
 
 provider "google" {
-  project = "digital-maker-333106"
+  project = "tejaswi-test"
 }
 
 

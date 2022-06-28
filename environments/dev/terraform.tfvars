@@ -1,4 +1,4 @@
-project                  = "digital-maker-333106"
+project                  = "tejaswi-test"
 network_name             = "network"
 auto_create_subnetworks  = "false"
 subnet_name              = "subnet"

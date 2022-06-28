@@ -3,7 +3,7 @@
 
 terraform {
   backend "gcs" {
-    bucket = "jan-10-1"
+    bucket = "tejaswi-test-tfstate"
     prefix = "env/dev"
   }
 }
