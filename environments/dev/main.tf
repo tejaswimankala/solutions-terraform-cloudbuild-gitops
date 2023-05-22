@@ -6,7 +6,7 @@ locals {
 }
 
 provider "google" {
-  project = "tejaswi-test"
+  project = "weighty-replica-383308"
 }
 
 
