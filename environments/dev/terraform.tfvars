@@ -1,4 +1,4 @@
-project                  = "tejaswi-test"
+project                  = "weighty-replica-383308"
 network_name             = "network"
 auto_create_subnetworks  = "false"
 subnet_name              = "subnet"
