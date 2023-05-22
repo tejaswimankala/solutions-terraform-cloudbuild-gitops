@@ -3,7 +3,7 @@
 
 terraform {
   backend "gcs" {
-    bucket = "tejaswi-test-tfstate"
+    bucket = "weighty-replica-383308-tfstate"
     prefix = "env/dev"
   }
 }
